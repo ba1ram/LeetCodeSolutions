@@ -6,7 +6,7 @@
 int main(int argc, char** argv){
 	Solutions tasks;
 	
-	std::cout << tasks.isPalindrome(10) << std::endl;
+	std::cout << tasks.romanToInt("MCMXCIV") << std::endl;
 	
 	return 0;
 }
