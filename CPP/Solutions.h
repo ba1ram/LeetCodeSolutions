@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include <math.h>
 
 class Solutions{
 public:
@@ -42,5 +43,17 @@ public:
 		return {};
     }
 	
+	//9. Palindrome Number
+    bool isPalindrome(int x) {
+		if( x < 0 || (x % 10 == 0 && x != 0)) return false;
+		
+		int reverse = 0;
+		while(x > reverse){    
+			reverse = reverse * 10 + x % 10;
+			x /= 10;
+		}
+		
+		return x == reverse || x == reverse / 10;
+    }
 	
 };
