@@ -86,4 +86,26 @@ public:
 		return num;
     }
 	
+	//14. Longest Common Prefix
+	std::string longestCommonPrefix(std::vector<std::string>& strs) {
+		int size = 0;
+		std::string sub = "";
+		std::string resultStr = "";
+		
+		if(strs.empty()) return "";
+		std::string firstStr = strs[0];
+		if(firstStr.empty()) return "";
+		
+		for(int i = 0; i < firstStr.size(); i++){
+			sub += firstStr[i];
+			for(int j = 1; j < strs.size(); j++){
+				if(strs[j].compare(0, sub.size(), sub)){
+					return resultStr;
+				}
+			}
+			resultStr += firstStr[i];
+		}
+		
+		return resultStr;
+    }
 };

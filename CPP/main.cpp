@@ -6,7 +6,8 @@
 int main(int argc, char** argv){
 	Solutions tasks;
 	
-	std::cout << tasks.romanToInt("MCMXCIV") << std::endl;
+	std::vector<std::string> strs{"a"};
+	std::cout << tasks.longestCommonPrefix(strs) << std::endl;
 	
 	return 0;
 }
