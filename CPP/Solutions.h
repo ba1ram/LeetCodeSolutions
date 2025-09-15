@@ -4,6 +4,8 @@
 #include <string>
 #include <unordered_map>
 #include <math.h>
+#include <stack>
+
 
 class Solutions{
 public:
@@ -107,5 +109,21 @@ public:
 		}
 		
 		return resultStr;
+    }
+	
+	//20. Valid Parentheses	
+	bool isValid(std::string s) {
+		std::stack<char> brackets;
+
+		for(auto& item : s){
+			if(item == ')' && !brackets.empty() && brackets.top() == '(') brackets.pop();
+			else if(item == '}' && !brackets.empty() && brackets.top() == '{') brackets.pop();
+			else if(item == ']' && !brackets.empty() && brackets.top() == '[') brackets.pop();
+            else brackets.push(item);
+		}
+		
+		if(brackets.empty()) return true;
+	
+		return false;
     }
 };
