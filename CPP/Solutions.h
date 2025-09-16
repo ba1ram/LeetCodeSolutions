@@ -6,6 +6,45 @@
 #include <math.h>
 #include <stack>
 
+//class ListNode {
+//
+//public:
+//	ListNode() : _value(0), _next(nullptr) {}
+//	ListNode(int val) : _value(val), _next(nullptr) {}
+//	ListNode(int val, ListNode* nextNode) : _value(val), _next(nextNode) {}
+//
+//	ListNode* push_back(int value) {
+//		if(_next == nullptr)
+//			_next = new ListNode(value);
+//		else {
+//			ListNode* item = _next;
+//			while (item->_next != nullptr)
+//				item = item->_next;
+//			item->_next = new ListNode(value);
+//		}
+//		
+//		_size++;
+//
+//		return _next;
+//	}
+//
+//	ListNode* nextNode() { return _next; }
+//	int value() { return _value; };
+//	int size() { return _size; }
+//private:
+//	int _value;
+//	ListNode* _next;
+//	static int _size;
+//};
+
+struct ListNode {
+	int val;
+	ListNode* next;
+	ListNode() : val(0), next(nullptr) {}
+	ListNode(int x) : val(x), next(nullptr) {}
+	ListNode(int x, ListNode* next) : val(x), next(next) {}
+};
+
 
 class Solutions{
 public:
@@ -125,5 +164,39 @@ public:
 		if(brackets.empty()) return true;
 	
 		return false;
+    }
+	
+	//21. Merge Two Sorted Lists
+	ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+		if (list1 == nullptr && list2 == nullptr) return {};
+		if (list1 == nullptr && list2 != nullptr) return list2;
+		if (list1 != nullptr && list2 == nullptr) return list1;
+		ListNode* iter1 = list1;
+		ListNode* iter2 = list2;
+
+
+
+		while (iter2->next != nullptr && iter1->val > iter2->next->val) {
+			iter2 = iter2->next;
+			if (iter2->next == nullptr) break;
+		}
+
+		if (iter1->val > iter2->val) {
+			ListNode* tmp = iter2->next;
+			iter2->next = new ListNode(iter1->val, tmp);
+		}
+		else {
+			ListNode* tmp = list2;
+			list2 = new ListNode(iter1->val, tmp);
+		}
+
+
+		if (iter1->next != nullptr)
+			iter1 = iter1->next;
+		else
+			return list2;
+
+
+		return mergeTwoLists(iter1, list2);
     }
 };
