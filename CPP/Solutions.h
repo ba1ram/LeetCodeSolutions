@@ -196,4 +196,12 @@ public:
 
 		return nums.size();
 	}
+
+	//27. Remove Element
+	int removeElement(std::vector<int>& nums, int val) {
+		
+		nums.erase(std::remove_if(nums.begin(), nums.end(), [val](int x) { return x == val; }), nums.end());
+
+		return nums.size();
+	}
 };

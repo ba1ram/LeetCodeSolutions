@@ -6,8 +6,8 @@
 int main(int argc, char** argv){
 	Solutions tasks;
 	
-	std::vector<int> nums = { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
-	std::cout << tasks.removeDuplicates(nums) << std::endl;
+	std::vector<int> nums = { 3,2,2,3 };
+	std::cout << tasks.removeElement(nums, 3) << std::endl;
 
 
 	for (auto i : nums) {
