@@ -204,4 +204,9 @@ public:
 
 		return nums.size();
 	}
+
+	//28. Find the Index of the First Occurrence in a String
+	int strStr(std::string haystack, std::string needle) {
+		return haystack.find(needle);
+	}
 };
