@@ -6,7 +6,7 @@
 int main(int argc, char** argv){
 	Solutions tasks;
 	
-	std::cout << tasks.strStr("asdf", "sad") << std::endl;
+	std::cout << tasks.strStr("a", "a") << std::endl;
 
 	return 0;
 }

@@ -207,6 +207,23 @@ public:
 
 	//28. Find the Index of the First Occurrence in a String
 	int strStr(std::string haystack, std::string needle) {
-		return haystack.find(needle);
+		int index = -1;
+		int flag = true;
+		for (int i = 0; i < haystack.size(); i++) {
+			flag = true;
+			if (i + needle.size() > haystack.size()) return -1;
+			int g = i;
+			index = g;
+			for (int j = 0; j < needle.size(); j++) {
+				std::cout << haystack[g] << " " << needle[j] << std::endl;
+				if (haystack[g] != needle[j]) {
+					flag = false;
+				}
+				g++;
+			}
+			if (flag == true) return index;
+		}
+
+		return -1;
 	}
 };
