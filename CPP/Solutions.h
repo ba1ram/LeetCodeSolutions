@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <math.h>
 #include <stack>
+#include <algorithm>
 
 //$env:GIT_SSH_COMMAND = "ssh -i 'C:\Users\СтарМарк Про\.ssh\id_rsa'"
 
@@ -185,4 +186,14 @@ public:
 			return list2;
 		}
     }
+
+	//26. Remove Duplicates from Sorted Array
+	int removeDuplicates(std::vector<int>& nums) {
+		nums.erase(
+			std::unique(nums.begin(), nums.end()),
+			nums.end()
+		);
+
+		return nums.size();
+	}
 };
