@@ -7,8 +7,13 @@ int main(int argc, char** argv){
 	Solutions tasks;
 	
 	ListNode list1(1);
+	list1.next = new ListNode(2);
+	list1.next->next = new ListNode(4);
 
-	ListNode list2(2);
+	ListNode list2(1);
+	list2.next = new ListNode(3);
+	list2.next->next = new ListNode(4);
+
 
 	ListNode* list3 = tasks.mergeTwoLists(&list1, &list2);
 

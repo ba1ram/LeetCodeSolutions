@@ -6,6 +6,8 @@
 #include <math.h>
 #include <stack>
 
+//$env:GIT_SSH_COMMAND = "ssh -i 'C:\Users\СтарМарк Про\.ssh\id_rsa'"
+
 //class ListNode {
 //
 //public:
@@ -168,35 +170,19 @@ public:
 	
 	//21. Merge Two Sorted Lists
 	ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-		if (list1 == nullptr && list2 == nullptr) return {};
-		if (list1 == nullptr && list2 != nullptr) return list2;
-		if (list1 != nullptr && list2 == nullptr) return list1;
-		ListNode* iter1 = list1;
-		ListNode* iter2 = list2;
+		if (list1 == nullptr)
+			return list2;
+		if (list2 == nullptr)
+			return list1;
 
 
-
-		while (iter2->next != nullptr && iter1->val > iter2->next->val) {
-			iter2 = iter2->next;
-			if (iter2->next == nullptr) break;
-		}
-
-		if (iter1->val > iter2->val) {
-			ListNode* tmp = iter2->next;
-			iter2->next = new ListNode(iter1->val, tmp);
+		if (list1->val < list2->val) {
+			list1->next = mergeTwoLists(list1->next, list2);
+			return list1;
 		}
 		else {
-			ListNode* tmp = list2;
-			list2 = new ListNode(iter1->val, tmp);
-		}
-
-
-		if (iter1->next != nullptr)
-			iter1 = iter1->next;
-		else
+			list2->next = mergeTwoLists(list1, list2->next);
 			return list2;
-
-
-		return mergeTwoLists(iter1, list2);
+		}
     }
 };
