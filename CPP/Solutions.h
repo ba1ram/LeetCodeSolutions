@@ -207,23 +207,37 @@ public:
 
 	//28. Find the Index of the First Occurrence in a String
 	int strStr(std::string haystack, std::string needle) {
-		int index = -1;
-		int flag = true;
-		for (int i = 0; i < haystack.size(); i++) {
-			flag = true;
-			if (i + needle.size() > haystack.size()) return -1;
-			int g = i;
-			index = g;
-			for (int j = 0; j < needle.size(); j++) {
-				std::cout << haystack[g] << " " << needle[j] << std::endl;
-				if (haystack[g] != needle[j]) {
-					flag = false;
+		for (size_t i = 0; i + needle.size() <= haystack.size(); i++) {
+			bool match = true;
+			for (size_t j = 0; j < needle.size(); j++) {
+				if (haystack[i + j] != needle[j]) {
+					match = false;
+					break;
 				}
-				g++;
 			}
-			if (flag == true) return index;
+			if (match) return static_cast<int>(i);
 		}
 
 		return -1;
 	}
+
+	//35. Search Insert Position
+	int searchInsert(std::vector<int>& nums, int target) {
+		int left = 0;
+		int right = nums.size() - 1;
+
+		while (left <= right) {
+			int mid = left + (right - left) / 2;
+
+			if (target == nums[mid])
+				return mid;
+			else if (target > nums[mid]) {
+				left = mid + 1;
+			}
+			else{
+				right = mid - 1;
+			}
+		}
+		return left;
+	}	
 };
