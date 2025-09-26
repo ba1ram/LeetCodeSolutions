@@ -239,5 +239,22 @@ public:
 			}
 		}
 		return left;
-	}	
+	}
+
+	//58. Length of Last Word
+	int lengthOfLastWord(std::string s) {
+		
+		while (!s.empty() && isspace((unsigned char)s.back())) {
+			s.pop_back();
+		}
+
+		// найдём последний пробел
+		size_t pos = s.find_last_of(' ');
+		if (pos != std::string::npos) {
+			s = s.substr(pos + 1); 
+		}
+
+		return s.length();
+
+	}
 };

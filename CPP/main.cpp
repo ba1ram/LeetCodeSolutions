@@ -8,7 +8,7 @@ int main(int argc, char** argv){
 	
 
 	std::vector<int> abc = { 1,3,5,6 };
-	std::cout << tasks.searchInsert(abc, 5) << std::endl;
+	std::cout << tasks.lengthOfLastWord() << std::endl;
 
 	return 0;
 }
